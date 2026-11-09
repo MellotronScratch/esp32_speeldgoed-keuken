@@ -1,0 +1,36 @@
+# Eén kookplaat: één potmeter en één LED-ring(set).
+# Wordt vier keer ingeladen vanuit keukentje.yaml.
+
+sensor:
+  - platform: adc
+    id: knob_${index}
+    internal: true
+    pin: ${knob_pin}
+    attenuation: 12db
+    update_interval: 100ms
+    filters:
+      - median:
+          window_size: 5
+          send_every: 1
+          send_first_at: 1
+
+light:
+  - platform: esp32_rmt_led_strip
+    id: hob_${index}
+    name: ${name}
+    pin: ${data_pin}
+    num_leds: ${leds}
+    chipset: WS2812
+    channel_colors: GRB
+    # De ESP32 heeft 512 RMT-symbolen: 128 per ring is precies genoeg voor vier.
+    rmt_symbols: 128
+    # Gamma uit, zodat de stroomgrens in hob_effect.h echt het verbruik begrenst.
+    gamma_correct: 1.0
+    default_transition_length: 0s
+    restore_mode: ALWAYS_ON
+    effects:
+      - addressable_lambda:
+          name: Kookplaat
+          update_interval: 50ms
+          lambda: |-
+            draw_hob(it, hobs[${index}], id(knob_${index}).state);
