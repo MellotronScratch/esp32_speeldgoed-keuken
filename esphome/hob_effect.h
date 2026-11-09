@@ -7,7 +7,7 @@
 
 // De ringen van één kookplaat, van binnen naar buiten. Het totaal moet gelijk
 // zijn aan leds_per_hob in keukentje.yaml.
-static const int RING_SIZES[] = {1, 8, 12, 16, 24, 32, 40, 48, 60};
+static const int RING_SIZES[] = {1, 8, 12, 16, 24, 32};
 static const int RING_COUNT = sizeof(RING_SIZES) / sizeof(RING_SIZES[0]);
 static const int HOB_COUNT = 4;
 

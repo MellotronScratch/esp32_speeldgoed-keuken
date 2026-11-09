@@ -193,7 +193,7 @@
 <circle cx="1255" cy="225" r="60" fill="none" stroke="#0e7490" stroke-width="3" opacity="0.65"/>
 <circle cx="1255" cy="225" r="70" fill="none" stroke="#0e7490" stroke-width="3" opacity="0.65"/>
 <text x="1338" y="218" font-size="14" text-anchor="start" fill="#111827" font-weight="bold">Kookplaat 4</text>
-<text x="1338" y="238" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">241 LEDs</text>
+<text x="1338" y="238" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">93 LEDs</text>
 <rect x="1130" y="330" width="305" height="170" rx="8" fill="#f3f4f6" stroke="#374151" stroke-width="2"/>
 <text x="1144" y="375" font-size="14" text-anchor="start" fill="#dc2626" font-weight="bold">5V</text>
 <text x="1144" y="420" font-size="14" text-anchor="start" fill="#7e22ce" font-weight="bold">DIN</text>
@@ -205,7 +205,7 @@
 <circle cx="1255" cy="415" r="60" fill="none" stroke="#7e22ce" stroke-width="3" opacity="0.65"/>
 <circle cx="1255" cy="415" r="70" fill="none" stroke="#7e22ce" stroke-width="3" opacity="0.65"/>
 <text x="1338" y="408" font-size="14" text-anchor="start" fill="#111827" font-weight="bold">Kookplaat 3</text>
-<text x="1338" y="428" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">241 LEDs</text>
+<text x="1338" y="428" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">93 LEDs</text>
 <rect x="1130" y="520" width="305" height="170" rx="8" fill="#f3f4f6" stroke="#374151" stroke-width="2"/>
 <text x="1144" y="565" font-size="14" text-anchor="start" fill="#dc2626" font-weight="bold">5V</text>
 <text x="1144" y="610" font-size="14" text-anchor="start" fill="#15803d" font-weight="bold">DIN</text>
@@ -217,7 +217,7 @@
 <circle cx="1255" cy="605" r="60" fill="none" stroke="#15803d" stroke-width="3" opacity="0.65"/>
 <circle cx="1255" cy="605" r="70" fill="none" stroke="#15803d" stroke-width="3" opacity="0.65"/>
 <text x="1338" y="598" font-size="14" text-anchor="start" fill="#111827" font-weight="bold">Kookplaat 2</text>
-<text x="1338" y="618" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">241 LEDs</text>
+<text x="1338" y="618" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">93 LEDs</text>
 <rect x="1130" y="710" width="305" height="170" rx="8" fill="#f3f4f6" stroke="#374151" stroke-width="2"/>
 <text x="1144" y="755" font-size="14" text-anchor="start" fill="#dc2626" font-weight="bold">5V</text>
 <text x="1144" y="800" font-size="14" text-anchor="start" fill="#1d4ed8" font-weight="bold">DIN</text>
@@ -229,7 +229,7 @@
 <circle cx="1255" cy="795" r="60" fill="none" stroke="#1d4ed8" stroke-width="3" opacity="0.65"/>
 <circle cx="1255" cy="795" r="70" fill="none" stroke="#1d4ed8" stroke-width="3" opacity="0.65"/>
 <text x="1338" y="788" font-size="14" text-anchor="start" fill="#111827" font-weight="bold">Kookplaat 1</text>
-<text x="1338" y="808" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">241 LEDs</text>
+<text x="1338" y="808" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">93 LEDs</text>
 <rect x="90" y="760" width="210" height="150" rx="8" fill="#f3f4f6" stroke="#374151" stroke-width="2"/>
 <text x="104" y="790" font-size="14" text-anchor="start" fill="#111827" font-weight="bold">18650-module 4-way</text>
 <text x="104" y="812" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">5V, max. 2,2 A</text>

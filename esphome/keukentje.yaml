@@ -2,9 +2,9 @@
 # Eerste keer flashen via USB, daarna via wifi:  esphome run keukentje.yaml
 
 substitutions:
-  # Aantal LEDs per kookplaat: 241 = 1+8+12+16+24+32+40+48+60.
+  # Aantal LEDs per kookplaat: 93 = 1+8+12+16+24+32.
   # Andere ringen? Pas dit getal én RING_SIZES in hob_effect.h aan.
-  leds_per_hob: "241"
+  leds_per_hob: "93"
 
 esphome:
   name: keukentje

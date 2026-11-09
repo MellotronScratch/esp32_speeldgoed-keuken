@@ -1,7 +1,7 @@
 # esp32_speeldgoed-keuken
 Speelgoed keuken met LED-Ring kookplaat, aangestuurd door ESP32
 
-Vier kookplaten met elk negen WS2812B-ringen (241 LEDs) en een eigen potmeter. Hoe
+Vier kookplaten met elk zes WS2812B-ringen (93 LEDs) en een eigen potmeter. Hoe
 verder de knop open staat, hoe meer ringen er branden. De ringen lichten één voor
 één langzaam op, van binnen naar buiten. Draai je de knop terug, dan gaan ze
 weer één voor één uit. Een plaat die 30 minuten niet is aangeraakt gaat vanzelf
@@ -12,7 +12,7 @@ uit. De firmware is ESPHome en werkt ook zonder wifi.
 | Aantal | Onderdeel | Waarvoor |
 |---|---|---|
 | 1 | ESP32-WROOM-32 devboard (38 pins) | De besturing |
-| 4 | LED-ringsets WS2812B, 241 LEDs | De kookplaten |
+| 4 | LED-ringsets WS2812B, 93 LEDs | De kookplaten |
 | 4 | Potmeter 10 kΩ **lineair** (B10K) | De knoppen |
 | 4 | Weerstand 330 Ω | In elke datalijn |
 | 1 | Elco 1000 µF (470 µF of meer kan ook), minstens 10 V | Vangt stroompieken op; aangeraden |
@@ -98,21 +98,18 @@ pin 14 en 7. De GPIO gaat naar de ingang, de uitgang gaat via 330 Ω naar DIN:
 De module (4-way) levert 5 V bij **2,2 A**. De firmware verdeelt daarom de stroom: alle platen
 samen blijven onder 1,7 A voor de LEDs, en de helderheid wordt daarop berekend.
 
-| Opstelling | LEDs | Verbruik LEDs uit | Helderheid | Leeg bij alles uit | Leeg bij alles vol aan |
+| Opstelling | LEDs | Verbruik LEDs uit (incl. ESP32) | Helderheid | Leeg bij alles uit | Leeg bij alles vol aan |
 |---|---|---|---|---|---|
-| 4 x 241 | 964 | ca. 1,1 A | ca. 3% | ca. 7 uur | ca. 3,5 uur |
-| 4 x 88 | 352 | ca. 0,5 A | ca. 15% | ca. 15 uur | ca. 3,5 uur |
+| 4 x 93 | 372 | ca. 0,5 A | ca. 14% | ca. 15 uur | ca. 3,5 uur |
 
 Dit zijn schattingen, uitgaande van 4 cellen van 3000 mAh en 85% rendement.
 
-- **Helderheid:** 3% is bewust laag. Je ziet het vast in een normale kamer, maar het wordt niet fel, en de fade heeft maar ongeveer 8 stapjes. Probeer dit vóór je giet.
 - **Hoofdschakelaar:** WS2812B-LEDs verbruiken ook stroom als ze uit staan. De automatische uitschakeling van de module werkt alleen onder 30 mA, en de ESP32 alleen zit daar al boven. Zonder schakelaar loopt de accu dus ook leeg als alle knoppen dicht staan.
 - **Schuifje op de module:** zet het op NORMAL. HOLD laat een weerstand warm worden en is hier niet nodig.
 
-**Feller nodig?** Sluit een 5V-adapter van 10 A aan en zet `LED_BUDGET_MA` op 8000; dat geeft ongeveer
-28% bij 4 x 241 (de firmware begrenst sowieso op 30%). Een andere optie is per kookplaat minder ringen aansluiten. Twee
-modules parallel schakelen mag niet; wel kun je elke module een eigen groep ringen geven, met
-gezamenlijke GND.
+**Feller nodig?** Sluit een 5V-adapter van 5 A aan, vervang de zekering door een van 5 A en zet
+`LED_BUDGET_MA` op 3300; dat geeft 30%, de bovengrens van de firmware. Twee modules parallel schakelen
+mag niet; wel kun je elke module een eigen groep ringen geven, met gezamenlijke GND.
 
 ### Veilig omgaan met de accu's
 
