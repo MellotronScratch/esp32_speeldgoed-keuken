@@ -24,6 +24,8 @@ uit. De firmware is ESPHome en werkt ook zonder wifi.
 
 ## Aansluiten
 
+![Aansluitschema](aansluitschema.svg)
+
 ```
  Module 5V ──[zekering 3A]──[schakelaar]──┬─────────► 5V van ring 1, 2, 3 en 4 (elk een eigen draad)
                                           ├─────────► 5V-pin van de ESP32
