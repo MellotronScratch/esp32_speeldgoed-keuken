@@ -54,7 +54,7 @@ uit. De firmware is ESPHome en werkt ook zonder wifi.
 - **Voed de LEDs niet via de ESP32.** De 5V-stroom gaat rechtstreeks van de module naar de ringen.
 - **Alle GND's moeten verbonden zijn**: module, ESP32, ringen en potmeters.
 - **Potmeters alleen op 3V3 van de ESP32, nooit op 5V.** Meer dan 3,3 V kan de ESP32 beschadigen.
-- **Ring-ingang:** sluit de kabel met "Data Input" aan (zie [ring_02.png](docs/ring_02.png)). Laat de uitgangskabel los en isoleer de draden. Controleer de opdruk op de print, want de draadkleuren verschillen per partij.
+- **Ring-ingang:** sluit de kabel aan die op de print bij de data-ingang (DIN) zit. Laat de uitgangskabel los en isoleer de draden. Controleer de opdruk op de print, want de draadkleuren verschillen per partij.
 - **Draaddikte:** 0,75 mm² vanaf de module, minstens 0,5 mm² naar elke ring. Soldeer op de 5V/GND-pads; dat is steviger dan via de USB-A-poort.
 - **Datadraden:** zo kort mogelijk, liefst onder de 50 cm, en het liefst naast een GND-draad.
 - **Draait een knop de verkeerde kant op?** Wissel dan de twee buitenpoten om.
