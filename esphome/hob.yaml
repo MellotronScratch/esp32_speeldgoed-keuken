@@ -1,18 +1,42 @@
-# Eén kookplaat: één potmeter en één LED-ring(set).
+# Eén kookplaat: één draaiknop (rotary encoder met drukknop) en één LED-ringset.
 # Wordt vier keer ingeladen vanuit keukentje.yaml.
 
 sensor:
-  - platform: adc
+  - platform: rotary_encoder
     id: knob_${index}
     internal: true
-    pin: ${knob_pin}
-    attenuation: 12db
-    update_interval: 100ms
+    pin_a:
+      number: ${pin_a}
+      mode:
+        input: true
+        pullup: ${pullup}
+    pin_b:
+      number: ${pin_b}
+      mode:
+        input: true
+        pullup: ${pullup}
+    # Telt hij maar bij elke tweede klik? Zet resolution dan op 2.
+    resolution: 1
+    min_value: 0
+    max_value: ${clicks_full}
+    # Na het aanzetten staan alle platen uit.
+    restore_mode: ALWAYS_ZERO
+
+binary_sensor:
+  - platform: gpio
+    id: button_${index}
+    internal: true
+    pin:
+      number: ${button_pin}
+      mode: { input: true, pullup: true }
+      inverted: true
     filters:
-      - median:
-          window_size: 5
-          send_every: 1
-          send_first_at: 1
+      - delayed_on_off: 20ms
+    # Knop indrukken: plaat uit.
+    on_press:
+      - sensor.rotary_encoder.set_value:
+          id: knob_${index}
+          value: 0
 
 light:
   - platform: esp32_rmt_led_strip
@@ -33,4 +57,7 @@ light:
           name: Kookplaat
           update_interval: 50ms
           lambda: |-
-            draw_hob(it, hobs[${index}], id(knob_${index}).state);
+            // draw_hob geeft true terug als de plaat automatisch uit moet.
+            if (draw_hob(it, hobs[${index}], id(knob_${index}).state, ${clicks_full})) {
+              id(knob_${index}).set_value(0);
+            }

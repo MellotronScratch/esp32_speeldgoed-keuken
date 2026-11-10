@@ -5,6 +5,8 @@ substitutions:
   # Aantal LEDs per kookplaat: 93 = 1+8+12+16+24+32.
   # Andere ringen? Pas dit getal én RING_SIZES in hob_effect.h aan.
   leds_per_hob: "93"
+  # Aantal klikjes van uit tot vol: 6 ringen x 2 klikjes per ring.
+  clicks_full: "12"
 
 esphome:
   name: keukentje
@@ -51,10 +53,12 @@ wifi:
 captive_portal:
 
 # Pinkeuze:
-# - Potmeters op ADC1 (GPIO32-35): ADC2 werkt niet zodra wifi aan staat.
-# - LED-data op GPIO16-19: geen strapping-pins (0, 2, 5, 12, 15).
+# - Geen strapping-pins (0, 2, 5, 12, 15).
+# - GPIO34 en GPIO35 hebben geen ingebouwde pull-up: daarom "pullup: false" en
+#   op de print een weerstand van 10 kOhm naar 3V3.
+# - Draait een knop de verkeerde kant op? Wissel dan pin_a en pin_b.
 packages:
-  hob_0: !include { file: hob.yaml, vars: { index: "0", name: "Kookplaat 1", knob_pin: GPIO32, data_pin: GPIO16, leds: "${leds_per_hob}" } }
-  hob_1: !include { file: hob.yaml, vars: { index: "1", name: "Kookplaat 2", knob_pin: GPIO33, data_pin: GPIO17, leds: "${leds_per_hob}" } }
-  hob_2: !include { file: hob.yaml, vars: { index: "2", name: "Kookplaat 3", knob_pin: GPIO34, data_pin: GPIO18, leds: "${leds_per_hob}" } }
-  hob_3: !include { file: hob.yaml, vars: { index: "3", name: "Kookplaat 4", knob_pin: GPIO35, data_pin: GPIO19, leds: "${leds_per_hob}" } }
+  hob_0: !include { file: hob.yaml, vars: { index: "0", name: "Kookplaat 1", pin_a: GPIO34, pin_b: GPIO35, pullup: "false", button_pin: GPIO32, data_pin: GPIO16, leds: "${leds_per_hob}", clicks_full: "${clicks_full}" } }
+  hob_1: !include { file: hob.yaml, vars: { index: "1", name: "Kookplaat 2", pin_a: GPIO33, pin_b: GPIO25, pullup: "true", button_pin: GPIO26, data_pin: GPIO17, leds: "${leds_per_hob}", clicks_full: "${clicks_full}" } }
+  hob_2: !include { file: hob.yaml, vars: { index: "2", name: "Kookplaat 3", pin_a: GPIO27, pin_b: GPIO14, pullup: "true", button_pin: GPIO13, data_pin: GPIO18, leds: "${leds_per_hob}", clicks_full: "${clicks_full}" } }
+  hob_3: !include { file: hob.yaml, vars: { index: "3", name: "Kookplaat 4", pin_a: GPIO23, pin_b: GPIO22, pullup: "true", button_pin: GPIO21, data_pin: GPIO19, leds: "${leds_per_hob}", clicks_full: "${clicks_full}" } }
