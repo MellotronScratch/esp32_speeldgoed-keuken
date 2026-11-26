@@ -280,7 +280,7 @@
 <text x="740" y="1150" font-size="13" text-anchor="start" fill="#6b7280" font-weight="normal">Vanaf hier: elke ring een eigen 5V- en GND-draad</text>
 <text x="40" y="1300" font-size="16" text-anchor="start" fill="#111827" font-weight="bold">Let op</text>
 <text x="40" y="1326" font-size="14" text-anchor="start" fill="#111827" font-weight="normal">• Encoder: C is meestal het middelste van de 3 pootjes. Bij de drukknop maakt het niet uit welk pootje naar GND gaat.</text>
-<text x="40" y="1350" font-size="14" text-anchor="start" fill="#111827" font-weight="normal">• Draait een knop verkeerd om? Wissel dan A en B, met de draden of met pin_a en pin_b in keukentje.yaml.</text>
+<text x="40" y="1350" font-size="14" text-anchor="start" fill="#111827" font-weight="normal">• Draait een knop verkeerd om? Wissel dan A en B, met de draden of met pin_a en pin_b in kookplaten.yaml.</text>
 <text x="40" y="1374" font-size="14" text-anchor="start" fill="#111827" font-weight="normal">• De 10 kΩ-weerstanden gaan naar de 3V3-pin van de ESP32, nooit naar 5V.</text>
 <text x="40" y="1398" font-size="14" text-anchor="start" fill="#111827" font-weight="normal">• Sluit de data-ingang (DIN) van elke ring aan. Laat de uitgangskabel los en isoleer de draden.</text>
 <text x="40" y="1422" font-size="14" text-anchor="start" fill="#111827" font-weight="normal">• Zet de hoofdschakelaar uit voordat je de USB-kabel in de ESP32 steekt. Niet getekend: de optionele 74AHCT125 (zie README).</text>

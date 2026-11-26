@@ -67,7 +67,7 @@ Bij elke encoder gaan C en één pootje van de drukknop naar GND.
 - **Ring-ingang:** sluit de kabel aan die op de print bij de data-ingang (DIN) zit. Laat de uitgangskabel los en isoleer de draden. Controleer de opdruk op de print, want de draadkleuren verschillen per partij.
 - **Draaddikte:** 0,75 mm² vanaf de module, minstens 0,5 mm² naar elke ring. Soldeer op de 5V/GND-pads; dat is steviger dan via de USB-A-poort.
 - **Datadraden:** zo kort mogelijk, liefst onder de 50 cm, en het liefst naast een GND-draad.
-- **Draait een knop de verkeerde kant op?** Wissel dan A en B om, met de draden of door `pin_a` en `pin_b` te wisselen in [keukentje.yaml](esphome/keukentje.yaml).
+- **Draait een knop de verkeerde kant op?** Wissel dan A en B om, met de draden of door `pin_a` en `pin_b` te wisselen in [kookplaten.yaml](esphome/kookplaten.yaml).
 - **Telt een knop maar bij elke tweede klik?** Zet dan `resolution` in [hob.yaml](esphome/hob.yaml) op 2.
 - **Elco:** plaats hem zo dicht mogelijk bij het punt waar de 5V-draden naar de ringen splitsen. Laat je hem weg, doe dan de starttest extra goed. Valt de ESP32 of de module uit, of knipperen er LEDs, dan moet hij er alsnog in.
 - **USB en module:** zet de hoofdschakelaar uit voordat je de USB-kabel insteekt.
@@ -132,6 +132,22 @@ Dit zit in speelgoed voor een kind, dus:
 
 ## Firmware installeren
 
+De configuratie bestaat uit twee lagen:
+
+- **[kookplaten.yaml](esphome/kookplaten.yaml):** het keukendeel, met de LEDs, de knoppen en het effect. Dit gebruik je altijd.
+- **Een apparaatbestand:** wifi, api en ota. [keukentje.yaml](esphome/keukentje.yaml) is voor de command line, [home-assistant.yaml](esphome/home-assistant.yaml) is voor de Device Builder.
+
+### Via Home Assistant (ESPHome Device Builder)
+
+1. **Secrets:** zet `wifi_ssid`, `wifi_password` en `api_key` in de Secrets van de Device Builder. Een `api_key` maak je met `openssl rand -base64 32`.
+2. **Apparaat aanmaken:** maak een nieuw apparaat aan, kies **Edit**, en vervang alles door de inhoud van [home-assistant.yaml](esphome/home-assistant.yaml).
+3. **Wachtwoord noodnetwerk:** verzin bij `ap:` een eigen wachtwoord van minstens 8 tekens.
+4. **Eerste keer flashen:** dat moet via USB. Kies **Install → Manual download** en flash het bestand in Chrome via [web.esphome.io](https://web.esphome.io). Daarna kan elke update via **Install → Wirelessly**.
+
+ESPHome haalt het keukendeel dan zelf van GitHub. Na een wijziging op GitHub zet je `refresh` tijdelijk op `0s`, of kies je bij het apparaat **Clean Build Files**.
+
+### Via de command line
+
 Nieuwere Python-versies werken nog niet met ESPHome (3.15 faalt, 3.13 werkt), dus kies expliciet 3.13:
 
 ```sh
@@ -149,9 +165,9 @@ Wordt het board niet herkend, installeer dan de driver voor de USB-chip (CP2102 
 
 | Wat | Waar |
 |---|---|
-| Aantal LEDs per kookplaat | `leds_per_hob` in [keukentje.yaml](esphome/keukentje.yaml) én `RING_SIZES` in [hob_effect.h](esphome/hob_effect.h) |
-| Aantal klikjes van uit tot vol | `clicks_full` in [keukentje.yaml](esphome/keukentje.yaml) |
-| Draairichting van een knop | Wissel `pin_a` en `pin_b` in [keukentje.yaml](esphome/keukentje.yaml) |
+| Aantal LEDs per kookplaat | `leds_per_hob` in [kookplaten.yaml](esphome/kookplaten.yaml) én `RING_SIZES` in [hob_effect.h](esphome/hob_effect.h) |
+| Aantal klikjes van uit tot vol | `clicks_full` in [kookplaten.yaml](esphome/kookplaten.yaml) |
+| Draairichting van een knop | Wissel `pin_a` en `pin_b` in [kookplaten.yaml](esphome/kookplaten.yaml) |
 | Tempo van de ringen, automatisch uit, stroomgrens | Bovenaan [hob_effect.h](esphome/hob_effect.h) |
 | Kleur | `GREEN_RATIO` in [hob_effect.h](esphome/hob_effect.h) |
 | Looplicht: snelheid en staart | `CHASE_RING_SEC` en `CHASE_TAIL_RINGS` in [hob_effect.h](esphome/hob_effect.h) |

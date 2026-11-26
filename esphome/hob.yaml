@@ -1,5 +1,5 @@
 # Eén kookplaat: één draaiknop (rotary encoder met drukknop) en één LED-ringset.
-# Wordt vier keer ingeladen vanuit keukentje.yaml.
+# Wordt vier keer ingeladen vanuit kookplaten.yaml.
 
 sensor:
   - platform: rotary_encoder
