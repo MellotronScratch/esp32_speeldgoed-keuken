@@ -1,6 +1,7 @@
 # Speelgoedkeuken, voor de ESPHome Device Builder in Home Assistant.
 # Kopieer dit naar de YAML van je apparaat. De kookplaten worden van GitHub gehaald.
-# Nodig in Secrets: wifi_ssid, wifi_password en api_key.
+# Nodig in Secrets: wifi_ssid, wifi_password, keukentje__api_key en keukentje__ota_password
+# (die laatste twee maakt de Device Builder zelf aan).
 
 esphome:
   name: keukentje
@@ -15,10 +16,11 @@ logger:
 
 api:
   encryption:
-    key: !secret api_key
+    key: !secret keukentje__api_key
 
 ota:
   - platform: esphome
+    password: !secret keukentje__ota_password
 
 wifi:
   ssid: !secret wifi_ssid

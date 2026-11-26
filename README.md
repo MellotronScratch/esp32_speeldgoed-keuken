@@ -139,7 +139,7 @@ De configuratie bestaat uit twee lagen:
 
 ### Via Home Assistant (ESPHome Device Builder)
 
-1. **Secrets:** zet `wifi_ssid`, `wifi_password` en `api_key` in de Secrets van de Device Builder. Een `api_key` maak je met `openssl rand -base64 32`.
+1. **Secrets:** zet `wifi_ssid`, `wifi_password`, `keukentje__api_key` en `keukentje__ota_password` in de Secrets van de Device Builder. De laatste twee maakt de Device Builder meestal zelf aan als je het apparaat aanmaakt; zijn ze leeg, maak de sleutel dan met `openssl rand -base64 32` en verzin een wachtwoord.
 2. **Apparaat aanmaken:** maak een nieuw apparaat aan, kies **Edit**, en vervang alles door de inhoud van [home-assistant.yaml](esphome/home-assistant.yaml).
 3. **Wachtwoord noodnetwerk:** verzin bij `ap:` een eigen wachtwoord van minstens 8 tekens.
 4. **Eerste keer flashen:** dat moet via USB. Kies **Install → Manual download** en flash het bestand in Chrome via [web.esphome.io](https://web.esphome.io). Daarna kan elke update via **Install → Wirelessly**.
