@@ -38,10 +38,30 @@ binary_sensor:
           id: knob_${index}
           value: 0
 
+# Schuifje in Home Assistant: doet hetzelfde als klikken aan de knop.
+number:
+  - platform: template
+    id: stand_${index}
+    name: Stand ${name}
+    icon: mdi:stove
+    min_value: 0
+    max_value: ${clicks_full}
+    step: 1
+    update_interval: 1s
+    lambda: |-
+      return id(knob_${index}).state;
+    set_action:
+      - sensor.rotary_encoder.set_value:
+          id: knob_${index}
+          value: !lambda "return x;"
+
 light:
   - platform: esp32_rmt_led_strip
     id: hob_${index}
     name: ${name}
+    # Niet zichtbaar in Home Assistant: zo kan niemand de helderheid of kleur
+    # zelf instellen en blijft de stroomgrens uit hob_effect.h altijd gelden.
+    internal: true
     pin: ${data_pin}
     num_leds: ${leds}
     chipset: WS2812

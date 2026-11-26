@@ -1,7 +1,6 @@
 # Speelgoedkeuken, voor de ESPHome Device Builder in Home Assistant.
 # Kopieer dit naar de YAML van je apparaat. De kookplaten worden van GitHub gehaald.
-# Nodig in Secrets: wifi_ssid, wifi_password, keukentje__api_key en keukentje__ota_password
-# (die laatste twee maakt de Device Builder zelf aan).
+# Nodig in Secrets: wifi_ssid, wifi_password en keukentje__api_key.
 
 esphome:
   name: keukentje
@@ -20,7 +19,8 @@ api:
 
 ota:
   - platform: esphome
-    password: !secret keukentje__ota_password
+    # Leeg laten: ESPHome vult de sleutel zelf in.
+    encryption:
 
 wifi:
   ssid: !secret wifi_ssid
@@ -28,8 +28,7 @@ wifi:
   ap:
     ssid: Keukentje-Setup
     # Verzin zelf een wachtwoord van minstens 8 tekens.
-    password: "kies-een-wachtwoord"
-
+    password: kies-een-wachtwoord
 captive_portal:
 
 packages:
@@ -37,6 +36,5 @@ packages:
     url: https://github.com/MellotronScratch/esp32_speeldgoed-keuken
     ref: main
     files: [esphome/kookplaten.yaml]
-    # Hoe vaak ESPHome GitHub opnieuw ophaalt. Zet tijdelijk op 0s om een
-    # wijziging direct mee te nemen.
-    refresh: 1d
+    # 0d: haal GitHub bij elke build opnieuw op, zodat een wijziging meteen meekomt.
+    refresh: 0d
